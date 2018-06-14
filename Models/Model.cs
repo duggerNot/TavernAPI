@@ -15,7 +15,7 @@ namespace TavernAPI.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=./TavernDB.db");
+            optionsBuilder.UseSqlite("Data Source=TavernDB.db");
         }
     }
 

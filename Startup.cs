@@ -25,9 +25,12 @@ namespace TavernAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TavernContext>(opt =>
-                opt.UseInMemoryDatabase("TavernDB"));
+            services.AddDbContext<TavernContext>(opt => opt.UseSqlite("Data Source=TavernDB.db"));
             services.AddMvc();
+            services.AddCors(opt => opt.AddPolicy("AllowDevEnviroment", builder => builder.AllowAnyHeader()
+                                                                                          .AllowAnyMethod()
+                                                                                          .AllowAnyOrigin()));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
